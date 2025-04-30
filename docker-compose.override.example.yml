@@ -1,0 +1,4 @@
+services:
+  janitor:
+    environment:
+      JANITOR_TELEGRAM_BOT_TOKEN: 123:ABC

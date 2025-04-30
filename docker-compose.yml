@@ -1,0 +1,8 @@
+services:
+  janitor:
+    container_name: janitor
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-local
+    volumes:
+      - "./bin:/app/bin"
