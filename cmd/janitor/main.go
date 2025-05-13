@@ -6,6 +6,7 @@ import (
 	"os/signal"
 
 	"github.com/nightnoryu/janitor/pkg/infrastructure/jsonlog"
+	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/handler"
 
 	"github.com/go-telegram/bot"
 )
@@ -21,7 +22,7 @@ func main() {
 	}
 
 	opts := []bot.Option{
-		bot.WithDebug(),
+		bot.WithDefaultHandler(handler.NewJanitorHandler(logger)),
 	}
 
 	b, err := bot.New(conf.TelegramBotToken, opts...)
