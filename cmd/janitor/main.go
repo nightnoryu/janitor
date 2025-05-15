@@ -5,8 +5,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/nightnoryu/janitor/pkg/infrastructure/jsonlog"
-	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/handler"
+	"github.com/nightnoryu/janitor/pkg/janitor/infrastructure/jsonlog"
+	"github.com/nightnoryu/janitor/pkg/janitor/infrastructure/telegram/handler"
 
 	"github.com/go-telegram/bot"
 )
@@ -21,11 +21,9 @@ func main() {
 		logger.FatalError(err)
 	}
 
-	opts := []bot.Option{
-		bot.WithDefaultHandler(handler.NewJanitorHandler(logger)),
-	}
+	options := initBotOptions(logger)
 
-	b, err := bot.New(conf.TelegramBotToken, opts...)
+	b, err := bot.New(conf.TelegramBotToken, options...)
 	if err != nil {
 		logger.FatalError(err)
 	}
@@ -42,4 +40,11 @@ func initLogger() jsonlog.Logger {
 		Level:   jsonlog.InfoLevel,
 	})
 	return logger
+}
+
+func initBotOptions(logger jsonlog.Logger) []bot.Option {
+	janitorHandler := handler.NewJanitorHandler(logger)
+	return []bot.Option{
+		bot.WithDefaultHandler(janitorHandler),
+	}
 }
