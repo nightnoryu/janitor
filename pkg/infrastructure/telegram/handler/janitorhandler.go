@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/go-telegram/bot/models"
-	"github.com/nightnoryu/janitor/pkg/janitor/infrastructure/jsonlog"
+	"github.com/nightnoryu/janitor/pkg/infrastructure/jsonlog"
 
 	tg "github.com/go-telegram/bot"
 )

@@ -5,8 +5,9 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/nightnoryu/janitor/pkg/janitor/infrastructure/jsonlog"
-	"github.com/nightnoryu/janitor/pkg/janitor/infrastructure/telegram/handler"
+	"github.com/nightnoryu/janitor/pkg/infrastructure/jsonlog"
+	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/handler"
+	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/initializer"
 
 	"github.com/go-telegram/bot"
 )
@@ -30,6 +31,11 @@ func main() {
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
+
+	err = initializer.InitializeCommands(ctx, b)
+	if err != nil {
+		logger.FatalError(err)
+	}
 
 	b.Start(ctx)
 }
