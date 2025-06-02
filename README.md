@@ -6,16 +6,16 @@ Telegram bot for automated channel moderation.
 
 Prerequisites:
 
-1. Linux
-2. Git
-3. Docker
-4. (optional) [BrewKit](https://github.com/ispringtech/brewkit)
+1. Git
+2. Docker
+3. [bkit](https://github.com/nightnoryu/bkit)
 
 Firstly, clone the repository into your `$GOPATH`:
 
 ```shell
 mkdir -p $GOPATH/src/github.com/nightnoryu
 cd $GOPATH/src/github.com/nightnoryu
+
 git clone git@github.com:nightnoryu/janitor.git
 cd janitor
 ```
@@ -23,10 +23,7 @@ cd janitor
 Then build the project:
 
 ```shell
-brewkit build
-
-# Alternatively, if you don't want to use BrewKit, you can do it the old-fashioned way:
-# go build -o ./bin/janitor ./cmd/janitor
+bkit build
 ```
 
 After that, copy the `docker-compose.override.example.yml` to `docker-compose.override.yml` and set the environment variables:
