@@ -1,4 +1,4 @@
-# :cop: janitor [![GitHub License](https://img.shields.io/github/license/nightnoryu/janitor)](https://opensource.org/license/MIT) [![Go Report Card](https://goreportcard.com/badge/github.com/nightnoryu/janitor)](https://goreportcard.com/report/github.com/nightnoryu/janitor)
+# :cop: janitor [![Github release](https://img.shields.io/github/release/nightnoryu/janitor.svg)](https://github.com/nightnoryu/janitor/releases) [![Build Status](https://github.com/nightnoryu/janitor/actions/workflows/check-go.yml/badge.svg)](https://github.com/nightnoryu/janitor/actions/workflows/check-go.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/nightnoryu/janitor)](https://goreportcard.com/report/github.com/nightnoryu/janitor)
 
 Telegram bot for automated channel moderation.
 
