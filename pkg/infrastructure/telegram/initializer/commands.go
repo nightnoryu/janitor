@@ -12,11 +12,7 @@ func InitializeCommands(ctx context.Context, b *bot.Bot) error {
 		Commands: []models.BotCommand{
 			{
 				Command:     "ban",
-				Description: "[reply] ban user",
-			},
-			{
-				Command:     "kick",
-				Description: "[reply] kick user",
+				Description: "[ответ] забанить",
 			},
 		},
 		Scope: &models.BotCommandScopeAllChatAdministrators{},
@@ -26,13 +22,8 @@ func InitializeCommands(ctx context.Context, b *bot.Bot) error {
 	}
 
 	_, err = b.SetMyCommands(ctx, &bot.SetMyCommandsParams{
-		Commands: []models.BotCommand{
-			{
-				Command:     "info",
-				Description: "show info",
-			},
-		},
-		Scope: &models.BotCommandScopeAllPrivateChats{},
+		Commands: []models.BotCommand{},
+		Scope:    &models.BotCommandScopeAllPrivateChats{},
 	})
 	if err != nil {
 		return err

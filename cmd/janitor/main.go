@@ -8,6 +8,7 @@ import (
 	"github.com/nightnoryu/janitor/pkg/infrastructure/jsonlog"
 	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/handler"
 	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/initializer"
+	"github.com/nightnoryu/janitor/pkg/infrastructure/telegram/middleware"
 
 	"github.com/go-telegram/bot"
 )
@@ -49,8 +50,8 @@ func initLogger() jsonlog.Logger {
 }
 
 func initBotOptions(logger jsonlog.Logger) []bot.Option {
-	janitorHandler := handler.NewJanitorHandler(logger)
 	return []bot.Option{
-		bot.WithDefaultHandler(janitorHandler),
+		bot.WithMiddlewares(middleware.NewLoggingMiddleware(logger)),
+		bot.WithDefaultHandler(handler.NewJanitorHandler(logger)),
 	}
 }
